@@ -1,0 +1,95 @@
+---
+import "@/styles/global.css";
+import { site } from "@/lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  image?: string;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  path = "/",
+  image = `${site.url}${site.favicon}`,
+} = Astro.props;
+
+const canonical = new URL(path, site.url).toString();
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Store", "Organization"],
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      email: site.email,
+      telephone: site.phone,
+      logo: `${site.url}${site.logo}`,
+      image: `${site.url}${site.logo}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address[0],
+        postalCode: "47475",
+        addressLocality: "Kamp-Lintfort",
+        addressCountry: "DE",
+      },
+      sameAs: [site.facebook, site.instagram],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: "de-DE",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: {
+        "@id": `${site.url}/#website`,
+      },
+      about: {
+        "@id": `${site.url}/#organization`,
+      },
+      inLanguage: "de-DE",
+      primaryImageOfPage: image,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#144384" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <link rel="icon" type="image/png" href={site.favicon} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

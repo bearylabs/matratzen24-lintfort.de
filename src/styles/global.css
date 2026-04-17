@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #144384;
+  --color-brand-soft: #eff1ff;
+  --color-text: #434656;
+  --color-muted: #a7aabd;
+  --color-link: #0074db;
+  --font-sans: "Open Sans", ui-sans-serif, sans-serif;
+  --font-display: "Source Sans Pro", ui-sans-serif, sans-serif;
+  --shadow-card: 1px 3px 4px 3px rgba(48, 48, 48, 0.27);
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans-latin-ext.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 800;
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/assets/fonts/open-sans-latin.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 800;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/assets/fonts/source-sans-pro-400.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("/assets/fonts/source-sans-pro-700.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-base leading-[1.6] text-text antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold text-brand;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply relative overflow-x-clip;
+  }
+
+  .section-wrap {
+    @apply mx-auto max-w-7xl px-5 py-[75px];
+  }
+
+  .subheading {
+    @apply font-display text-[26px] font-semibold uppercase tracking-[0.12em] text-muted md:text-[28px];
+  }
+
+  .section-title {
+    @apply text-[40px] leading-[1.15] md:text-[50px];
+  }
+
+  .hero-button {
+    @apply inline-flex items-center rounded-[2px] border-2 border-white px-4 py-2 text-base font-semibold text-white hover:bg-white hover:text-text;
+  }
+
+  .pill-button {
+    @apply inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-base font-semibold text-white transition-transform duration-200 hover:scale-110;
+  }
+
+  .info-card {
+    @apply flex max-w-[300px] flex-col items-center px-5 py-5 text-center text-white;
+  }
+
+  .contact-panel {
+    @apply mx-auto flex w-full max-w-[640px] flex-col rounded-2xl bg-brand px-4 py-12 text-left text-white shadow-[var(--shadow-card)] md:px-8;
+  }
+
+  .legal-copy p {
+    @apply mb-6;
+  }
+
+  .legal-copy a {
+    @apply text-link underline-offset-4 hover:underline;
+  }
+}

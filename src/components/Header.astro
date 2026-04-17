@@ -1,0 +1,96 @@
+---
+import { announcement, footerLinks, site } from "@/lib/site";
+---
+
+<header class="absolute inset-x-0 top-0 z-30 isolate">
+  <div
+    class="border-b border-white/60 bg-white/94 text-center text-sm font-semibold text-brand shadow-sm"
+  >
+    <div class="mx-auto max-w-7xl px-4 py-2">
+      <span>{announcement.title}</span>
+      <span class="hidden text-text/90 sm:inline"> - {announcement.text}</span>
+    </div>
+  </div>
+  <div class="mx-auto mt-3 max-w-6xl px-4">
+    <div
+      class="mt-4 flex items-center justify-between rounded-[24px] border border-white/60 bg-white/90 px-3 py-2 shadow-[0_16px_40px_rgba(20,67,132,0.12)] md:mt-0 md:min-h-[72px] md:px-5"
+    >
+      <a
+        href="/"
+        aria-label={site.name}
+        class="inline-flex items-center"
+      >
+        <img
+          src="/assets/images/nav-matratzen-outlet-logo.svg"
+          alt="Matratzen Outlet Lintfort Logo"
+          width="287"
+          height="139"
+          class="h-[42px] w-auto md:h-[50px]"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+      <button
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand/12 bg-white/92 text-brand shadow-sm md:hidden"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-nav-toggle
+      >
+        <span class="sr-only">Navigation öffnen</span>
+        <svg
+          viewBox="0 0 24 24"
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      <nav class="hidden md:block" aria-label="Hauptnavigation">
+        <ul class="flex items-center gap-1.5 text-[14px] font-bold tracking-[0.01em] text-text">
+          {
+            footerLinks.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="inline-flex rounded-full px-3.5 py-2 text-text transition-all duration-200 hover:bg-brand-soft hover:text-brand"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <a
+        href={site.phoneHref}
+        class="hidden items-center rounded-full bg-brand px-4 py-2 text-[13px] font-semibold text-white shadow-md shadow-brand/20 transition-transform duration-200 hover:-translate-y-0.5 lg:inline-flex"
+      >
+        Jetzt anrufen
+      </a>
+    </div>
+    <nav
+      id="mobile-nav"
+      class="mt-3 hidden rounded-[24px] border border-white/60 bg-white/95 px-4 py-4 shadow-[0_18px_50px_rgba(20,67,132,0.14)] md:hidden"
+      aria-label="Mobile Navigation"
+      data-nav-panel
+    >
+      <ul class="grid gap-3 text-base font-semibold text-text">
+        {
+          footerLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block rounded-lg px-2 py-2 hover:bg-brand-soft hover:text-brand"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

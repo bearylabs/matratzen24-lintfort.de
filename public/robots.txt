@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matratzen24-lintfort.de/sitemap.xml

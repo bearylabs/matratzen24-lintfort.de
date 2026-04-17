@@ -1,0 +1,21 @@
+---
+import StandardPage from "@/components/StandardPage.astro";
+import { site } from "@/lib/site";
+
+interface Props {
+  title: string;
+  path: string;
+  content: string;
+}
+
+const { title, path, content } = Astro.props;
+---
+
+<StandardPage title={`${title} | ${site.name}`} description={`${title} von ${site.name}.`} path={path}>
+  <section class="section-wrap">
+    <div class="mx-auto max-w-4xl rounded-3xl bg-white p-8 shadow-xl md:p-12">
+      <h1 class="section-title">{title}</h1>
+      <div class="legal-copy mt-8" set:html={content} />
+    </div>
+  </section>
+</StandardPage>

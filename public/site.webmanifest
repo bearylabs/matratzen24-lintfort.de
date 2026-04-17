@@ -1,0 +1,15 @@
+{
+  "name": "Matratzen Outlet Lintfort",
+  "short_name": "Matratzen Outlet",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#144384",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    }
+  ]
+}

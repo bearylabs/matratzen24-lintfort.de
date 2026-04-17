@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/components/BaseLayout.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  pageClass?: string;
+  mainClass?: string;
+}
+
+const {
+  title,
+  description,
+  path = "/",
+  pageClass = "bg-brand-soft",
+  mainClass = "pt-40",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <div class:list={["page-shell", pageClass]}>
+    <Header />
+    <main class={mainClass}>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

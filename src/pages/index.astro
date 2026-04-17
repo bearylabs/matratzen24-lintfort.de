@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "@/components/BaseLayout.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
@@ -10,6 +11,12 @@ import {
   sliderImages,
   warehouse,
 } from "@/lib/site";
+
+const heroImage = await getImage({
+  src: site.heroImage,
+  format: "webp",
+  quality: 85,
+});
 ---
 
 <BaseLayout>
@@ -20,7 +27,7 @@ import {
       <section
         id="start"
         class="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-brand bg-cover bg-center bg-no-repeat pt-40 text-white md:bg-fixed md:pt-44"
-        style={`background-image: linear-gradient(rgba(20,67,132,0.22), rgba(20,67,132,0.58)), url('${site.heroImage}')`}
+        style={`background-image: linear-gradient(rgba(20,67,132,0.22), rgba(20,67,132,0.58)), url('${heroImage.src}')`}
       >
         <div
           class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.24),transparent_34%),radial-gradient(circle_at_right,rgba(255,255,255,0.14),transparent_28%)]"
@@ -265,11 +272,14 @@ import {
                   class="min-w-full snap-center"
                   aria-hidden={index === 0 ? "false" : "true"}
                 >
-                  <img
+                  <Image
                     src={src}
+                    format="webp"
                     alt=""
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
+                    widths={[480, 768, 1280, 1920]}
+                    sizes="100vw"
                     class="h-[60vh] w-full object-cover"
                   />
                 </div>
@@ -307,8 +317,9 @@ import {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src={about.image}
+                format="webp"
                 alt={about.imageAlt}
                 width="1024"
                 height="768"
@@ -345,8 +356,9 @@ import {
               <p class="subheading">{warehouse.subheading}</p>
               <h2 class="section-title mt-3">{warehouse.title}</h2>
               <div class="mt-8">
-                <img
+                <Image
                   src={warehouse.images[0].src}
+                  format="webp"
                   alt={warehouse.images[0].alt}
                   width="1024"
                   height="768"
@@ -359,8 +371,9 @@ import {
             </div>
 
             <div class="flex flex-col gap-8 pt-4 md:pt-0">
-              <img
+              <Image
                 src={warehouse.images[1].src}
+                format="webp"
                 alt={warehouse.images[1].alt}
                 width="1024"
                 height="768"
@@ -368,8 +381,9 @@ import {
                 decoding="async"
                 class="w-full rounded-2xl object-cover shadow-xl"
               />
-              <img
+              <Image
                 src={warehouse.images[2].src}
+                format="webp"
                 alt={warehouse.images[2].alt}
                 width="1024"
                 height="808"

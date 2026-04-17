@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
 import "@/styles/global.css";
 import { site } from "@/lib/site";
 
@@ -6,17 +8,30 @@ interface Props {
   title?: string;
   description?: string;
   path?: string;
-  image?: string;
+  image?: ImageMetadata;
 }
 
 const {
   title = site.title,
   description = site.description,
   path = "/",
-  image = `${site.url}${site.favicon}`,
+  image = site.heroImage,
 } = Astro.props;
 
 const canonical = new URL(path, site.url).toString();
+const socialImage = await getImage({
+  src: image,
+  format: "webp",
+  width: 1200,
+  quality: 85,
+});
+const favicon = await getImage({
+  src: site.favicon,
+  format: "webp",
+  width: 300,
+  quality: 90,
+});
+const socialImageUrl = new URL(socialImage.src, site.url).toString();
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -59,7 +74,7 @@ const organizationSchema = {
         "@id": `${site.url}/#organization`,
       },
       inLanguage: "de-DE",
-      primaryImageOfPage: image,
+      primaryImageOfPage: socialImageUrl,
     },
   ],
 };
@@ -81,12 +96,12 @@ const organizationSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={socialImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-    <link rel="icon" type="image/png" href={site.favicon} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <link rel="icon" type="image/webp" href={favicon.src} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </head>
   <body>

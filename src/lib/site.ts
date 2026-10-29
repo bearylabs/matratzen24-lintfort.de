@@ -20,9 +20,9 @@ import warehouseImage03 from "@/assets/images/warehouse/57-1.jpg";
 
 export const site = {
   name: "Matratzen Outlet Lintfort",
-  title: "Matratzen Outlet | Matratzen zu unschlagbaren Preisen",
+  title: "Matratzen Outlet Lintfort | Markenmatratzen im Lagerverkauf",
   description:
-    "Bis zu 70% Rabatt auf alle bekannten Marken Matratzen. Testsieger Matratzen und weitere Bettwaren zu den besten Preisen im Lagerverkauf im Matratzen Outlet.",
+    "Im Matratzen Outlet Lintfort findest du Markenmatratzen und weitere Bettwaren zu Outlet-Preisen im Lagerverkauf. Sonderposten und Restposten direkt aus dem Lager.",
   url: "https://matratzen24-lintfort.de",
   email: "verkauf@lepur.de",
   phone: "+49 2842 1219855",
@@ -44,8 +44,8 @@ export const openingHours = [
 ];
 
 export const announcement = {
-  title: "Neue Lieferung eingetroffen",
-  text: "Eine frische Lieferung mit vielen neuen hochwertigen Matratzen ist neu bei uns eingetroffen",
+  title: "Matratzen im Lagerverkauf",
+  text: "Entdecke unsere Matratzen und Bettwaren direkt vor Ort in Kamp-Lintfort.",
 };
 
 export const sliderImages: ImageMetadata[] = [
@@ -65,9 +65,9 @@ export const sliderImages: ImageMetadata[] = [
 export const about = {
   title: "Über uns",
   paragraphs: [
-    "Mit 80% unseres Handelsvolumen ist unser Kerngeschäft der Großhandel sowie der Handel großer Rest- und Sonderposten. Wir freuen uns dabei sehr unsere unschlagbaren Preise auch an den Endverbraucher weiter zu geben und damit eine sehr günstige Alternative zu dem herkömmlichen Matratzenfachgeschäft zu bieten.",
-    "Hier kannst du deine Traummatratze direkt aus dem Lager mit einer Auswahl von über 800 Matratzen aussuchen.",
-    "Bei uns gibt es Matratzen und weitere Bettwaren zum günstigsten Preis. Komm doch einfach zum Probeliegen vorbei.",
+    "Unser Kerngeschäft ist der Großhandel sowie der Handel mit Rest- und Sonderposten. Auch als Privatkunde bekommst du bei uns Markenqualität zu Outlet-Preisen direkt aus dem Lager.",
+    "Hier kannst du deine Traummatratze direkt vor Ort aus einer Auswahl von mehr als 2000 Matratzen aussuchen.",
+    "Bei uns gibt es Matratzen und weitere Bettwaren zu fairen Lagerverkaufspreisen. Komm doch einfach zum Probeliegen vorbei.",
     "Wir freuen uns auf Dich!",
   ],
   image: aboutImage,
@@ -78,7 +78,7 @@ export const warehouse = {
   title: "Unser Lager",
   subheading: "Bilder",
   copy:
-    "Auf über 500 Quadratmeter bieten wir eine Auswahl von mehr als 800 Matratzen, sowie Topper, Lattenroste und Betten.",
+    "In unserem Lager findest du mehr als 2000 Matratzen sowie Topper, Lattenroste und Betten.",
   images: [
     {
       src: warehouseImage01,

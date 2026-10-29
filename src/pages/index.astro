@@ -3,6 +3,7 @@ import { Image, getImage } from "astro:assets";
 import BaseLayout from "@/components/BaseLayout.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import WhatsAppButton from "@/components/WhatsAppButton.astro";
 import {
   about,
   openingHours,
@@ -57,7 +58,7 @@ const heroImage = await getImage({
               >
                 Bei uns bekommst du Markenqualität zu Outlet-Preisen, direkt aus dem Lager.
               </p>
-              <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
                 <a
                   href="#anfahrt"
                   class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-brand shadow-lg shadow-black/10 transition-transform duration-200 hover:-translate-y-0.5"
@@ -70,6 +71,7 @@ const heroImage = await getImage({
                 >
                   {site.phone}
                 </a>
+                <WhatsAppButton />
               </div>
               <div
                 class="mt-8 flex flex-wrap gap-3 text-sm font-semibold text-white/92"
